@@ -1,15 +1,12 @@
 #!groovy
 
 pipeline {
-    agent {
-        docker {
-            image 'python:3.7'
-        }
-    }
+    agent any
+
     stages {
-        stage('Build') {
+        stage('Install dependecies') {
             steps {
-                echo 'Building..'
+                sh "pip install -r requirements.txt "
             }
         }
         stage('Test') {
