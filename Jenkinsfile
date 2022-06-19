@@ -1,14 +1,14 @@
 pipeline {
     agent{  
-                docker {
-                    image "python:3.10"
-                    args '-u 0'
-                }
-            }
+        docker {
+            image "python:3.10"
+            args '-u 0'
+        }
+    }
     stages{
         stage("test"){
             steps{
-                sh "docker exec modest_almeida ls"
+                sh "echo ckemi"
             }
         }
     }
