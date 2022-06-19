@@ -1,10 +1,12 @@
 pipeline {
-    agent{
-        docker {
-            image "pypy"
+    stage("test"){
+        agent{  
+            docker {
+                image "pypy"
+            }
         }
-    }
-    steps{
-        sh "echo hello"
+        steps{
+            sh "echo hello"
+        }
     }
 }
