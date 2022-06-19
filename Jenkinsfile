@@ -8,7 +8,7 @@ pipeline {
                 }
             }
             steps{
-                sh "python python.py"
+                sh "python3 --version"
             }
         }
     }
