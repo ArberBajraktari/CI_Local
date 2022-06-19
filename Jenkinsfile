@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage("test"){
             steps{
-                sh "python3 --version"
+                sh "docker exec modest_almeida ls"
             }
         }
     }
