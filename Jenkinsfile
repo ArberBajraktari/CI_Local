@@ -18,12 +18,22 @@ pipeline {
             }
         }
         stage("Lint"){
+            agent{
+                docker{
+                    image 'python:3.10'
+                }
+            }
             steps{
                 sh "pycodestyle app"
             }
         }
 
         stage("Test"){
+            agent{
+                docker{
+                    image 'python:3.10'
+                }
+            }
             steps{
                 sh "python3 python.py"
             }
