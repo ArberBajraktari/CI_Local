@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage("Installing dependencies"){
             steps{
-                sh "pip install --no-cache-dir --upgrade -r /code/requirements.txt"
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
             }
         }
         stage("Lint"){
