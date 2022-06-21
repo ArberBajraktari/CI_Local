@@ -5,6 +5,11 @@ pipeline {
             args '-u 0'
         }
     }
+
+    environment {
+        imagename = "bajraktari/ci_backend_fastapi"
+    }
+
     stages{
         stage("Installing dependencies"){
             steps{
@@ -23,12 +28,13 @@ pipeline {
         }
         stage("Build"){
             steps{
-                sh "python3 python.py"
+                sh "docker build -t ci_backend_fastapi ."
             }
         }
         stage("Deploy"){
             steps{
-                sh "python3 python.py"
+                sh "docker login -u bajraktari -p $dockerhub_pwd"
+                sh "docker push bajraktari/ci_frontend_flask"
             }
         }
     }
