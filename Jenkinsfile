@@ -41,11 +41,11 @@ pipeline {
                 sh "docker build -t bajraktari/ci_frontend_flask ."
             }
         }
-        stage("Deploy"){
-            steps{
-                sh "docker login -u bajraktari -p Bajrak!10"
-                sh "docker push bajraktari/ci_frontend_flask"
-            }
-        }
+        // stage("Deploy"){
+        //     steps{
+        //         sh "docker login -u bajraktari -p Bajrak!10"
+        //         sh "docker push bajraktari/ci_frontend_flask"
+        //     }
+        // }
     }
 }
