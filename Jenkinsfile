@@ -36,15 +36,14 @@ pipeline {
         //     }
         // }
         stage("Build"){
-            agent any
             steps{
-                sh "docker build -t bajraktari/ci_frontend_flask ."
+                sh "docker build -t bajraktari/ci_backend_fastapi ."
             }
         }
         stage("Deploy"){
             steps{
                 sh "docker login -u bajraktari -p Bajrak!10"
-                sh "docker push bajraktari/ci_frontend_flask"
+                sh "docker push bajraktari/ci_backend_fastapi"
             }
         }
     }
