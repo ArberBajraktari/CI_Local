@@ -16,6 +16,7 @@ pipeline {
             steps{
                 // sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 // sh "pycodestyle app"
+                sh "echo h"
             }
         }
 
