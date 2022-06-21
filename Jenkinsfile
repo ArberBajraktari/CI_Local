@@ -43,7 +43,7 @@ pipeline {
         }
         stage("Deploy"){
             steps{
-                sh "docker login -u bajraktari -p $dockerhub_psw"
+                sh "docker login -u bajraktari -p Bajrak!10"
                 sh "docker push bajraktari/ci_frontend_flask"
             }
         }
