@@ -15,30 +15,30 @@ pipeline {
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
             }
         }
-        stage("Lint"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
-            steps{
-                sh "pycodestyle app"
-            }
-        }
-        stage("Test"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
-            steps{
-                sh "python3 python.py"
-            }
-        }
+        // stage("Lint"){
+        //     agent{
+        //         docker{
+        //             image 'python:3.10'
+        //         }
+        //     }
+        //     steps{
+        //         sh "pycodestyle app"
+        //     }
+        // }
+        // stage("Test"){
+        //     agent{
+        //         docker{
+        //             image 'python:3.10'
+        //         }
+        //     }
+        //     steps{
+        //         sh "python3 python.py"
+        //     }
+        // }
         stage("Build"){
             agent any
             steps{
-                sh "docker ps"
+                sh "docker build -t ci_frontend_flask ."
             }
         }
         stage("Deploy"){
