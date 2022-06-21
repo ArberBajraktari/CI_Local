@@ -11,10 +11,6 @@ pipeline {
     }
 
     stages{
-        stage('Initialize'){
-            def dockerHome = tool 'Docker'        
-            env.PATH = "${dockerHome}/bin:${env.PATH}"    
-        }
         stage("Installing dependencies"){
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
@@ -32,7 +28,7 @@ pipeline {
         }
         stage("Build"){
             steps{
-                sh "docker build -t ci_backend_fastapi ."
+                sh "docker ps"
             }
         }
         stage("Deploy"){
