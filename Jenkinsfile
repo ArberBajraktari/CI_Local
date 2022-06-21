@@ -38,7 +38,7 @@ pipeline {
         stage("Build"){
             agent any
             steps{
-                sh "docker build -t ci_frontend_flask ."
+                sh "docker build -t bajraktari/ci_frontend_flask ."
             }
         }
         stage("Deploy"){
