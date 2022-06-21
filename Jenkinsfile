@@ -5,16 +5,16 @@ pipeline {
     }
 
     stages{
-        stage("Installing dependencies"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
-            steps{
-                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
-            }
-        }
+        // stage("Installing dependencies"){
+        //     agent{
+        //         docker{
+        //             image 'python:3.10'
+        //         }
+        //     }
+        //     steps{
+        //         sh "pip install --no-cache-dir --upgrade -r requirements.txt"
+        //     }
+        // }
         // stage("Lint"){
         //     agent{
         //         docker{
@@ -35,17 +35,17 @@ pipeline {
         //         sh "python3 python.py"
         //     }
         // }
-        // stage("Build"){
-        //     agent any
-        //     steps{
-        //         sh "docker build -t bajraktari/ci_frontend_flask ."
-        //     }
-        // }
-        // stage("Deploy"){
-        //     steps{
-        //         sh "docker login -u bajraktari -p Bajrak!10"
-        //         sh "docker push bajraktari/ci_frontend_flask"
-        //     }
-        // }
+        stage("Build"){
+            agent any
+            steps{
+                sh "docker build -t bajraktari/ci_frontend_flask ."
+            }
+        }
+        stage("Deploy"){
+            steps{
+                sh "docker login -u bajraktari -p Bajrak!10"
+                sh "docker push bajraktari/ci_frontend_flask"
+            }
+        }
     }
 }
