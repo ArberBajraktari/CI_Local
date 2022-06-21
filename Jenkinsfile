@@ -7,16 +7,6 @@ pipeline {
     }
 
     stages{
-        stage("Installing dependencies"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
-            steps{
-                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
-            }
-        }
         stage("Lint"){
             agent{
                 docker{
@@ -24,10 +14,10 @@ pipeline {
                 }
             }
             steps{
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
             }
         }
-
         stage("Test"){
             agent{
                 docker{
@@ -35,6 +25,7 @@ pipeline {
                 }
             }
             steps{
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "python3 python.py"
             }
         }
