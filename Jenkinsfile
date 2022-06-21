@@ -6,7 +6,27 @@ pipeline {
         }
     }
     stages{
-        stage("test"){
+        stage("Installing dependencies"){
+            steps{
+                sh "pip install --no-cache-dir --upgrade -r /code/requirements.txt"
+            }
+        }
+        stage("Lint"){
+            steps{
+                sh "pycodestyle app"
+            }
+        }
+        stage("Test"){
+            steps{
+                sh "python3 python.py"
+            }
+        }
+        stage("Build"){
+            steps{
+                sh "python3 python.py"
+            }
+        }
+        stage("Deploy"){
             steps{
                 sh "python3 python.py"
             }
