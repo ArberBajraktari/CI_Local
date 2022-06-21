@@ -8,7 +8,7 @@ pipeline {
     stages{
         stage("test"){
             steps{
-                sh "print('ckemi')"
+                sh "python3 python.py"
             }
         }
     }
