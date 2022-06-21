@@ -2,6 +2,7 @@ pipeline {
     agent any
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
+        dockerhub_pwd = credentials("dockerhub_pwd")
     }
 
     stages{
@@ -42,7 +43,7 @@ pipeline {
         }
         stage("Deploy"){
             steps{
-                sh "docker login -u bajraktari -p Bajrak!10"
+                sh "docker login -u bajraktari -p $dockerhub_pwd"
                 sh "docker push bajraktari/ci_backend_fastapi"
             }
         }
