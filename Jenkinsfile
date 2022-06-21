@@ -1,27 +1,32 @@
 pipeline {
-    agent any
-
+    agent{
+        docker{
+            image 'python:3.10'
+        }
+    }
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
     }
 
     stages{
-        // stage("Installing dependencies"){
-        //     steps{
-        //         sh "pip install --no-cache-dir --upgrade -r requirements.txt"
-        //     }
-        // }
-        // stage("Lint"){
-        //     steps{
-        //         sh "pycodestyle app"
-        //     }
-        // }
-        // stage("Test"){
-        //     steps{
-        //         sh "python3 python.py"
-        //     }
-        // }
+        stage("Installing dependencies"){
+
+            steps{
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
+            }
+        }
+        stage("Lint"){
+            steps{
+                sh "pycodestyle app"
+            }
+        }
+        stage("Test"){
+            steps{
+                sh "python3 python.py"
+            }
+        }
         stage("Build"){
+            agent any
             steps{
                 sh "docker ps"
             }
