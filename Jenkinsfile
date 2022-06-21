@@ -35,12 +35,12 @@ pipeline {
         //         sh "python3 python.py"
         //     }
         // }
-        stage("Build"){
-            agent any
-            steps{
-                sh "docker build -t bajraktari/ci_frontend_flask ."
-            }
-        }
+        // stage("Build"){
+        //     agent any
+        //     steps{
+        //         sh "docker build -t bajraktari/ci_frontend_flask ."
+        //     }
+        // }
         // stage("Deploy"){
         //     steps{
         //         sh "docker login -u bajraktari -p Bajrak!10"
