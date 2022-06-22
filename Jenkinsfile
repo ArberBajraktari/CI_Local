@@ -36,11 +36,12 @@ pipeline {
             }
         }
         stage("Deploy"){
-            if (CURRENT_BRANCH == 'master') {
-                steps{
-                    sh "docker login -u $dockerhub_usr -p $dockerhub_pwd"
-                    sh "docker push $imagename"
-                }
+            when{
+                branch "master"
+            }
+            steps{
+                sh "docker login -u $dockerhub_usr -p $dockerhub_pwd"
+                sh "docker push $imagename"
             }
         }
     }
