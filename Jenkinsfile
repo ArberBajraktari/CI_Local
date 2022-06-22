@@ -4,6 +4,7 @@ pipeline {
         imagename = "bajraktari/ci_backend_fastapi"
         dockerhub_usr = "bajraktari"
         dockerhub_pwd = credentials("dockerhub_pwd")
+        branch_name = env.BRANCH_NAME
     }
 
     stages{
