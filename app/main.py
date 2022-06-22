@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 import csv
-import json, os
+import json
+import os
 from functools import lru_cache
 
 app = FastAPI()
