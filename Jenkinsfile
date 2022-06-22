@@ -4,7 +4,6 @@ pipeline {
         imagename = "bajraktari/ci_backend_fastapi"
         dockerhub_usr = "bajraktari"
         dockerhub_pwd = credentials("dockerhub_pwd")
-        branch_name = env.BRANCH_NAME
     }
 
     stages{
@@ -17,6 +16,7 @@ pipeline {
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
+                sh "printenv"
             }
         }
         stage("Test"){
