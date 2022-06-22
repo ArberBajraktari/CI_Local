@@ -17,7 +17,6 @@ pipeline {
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
-                sh "$branch_name"
             }
         }
         stage("Test"){
@@ -37,9 +36,11 @@ pipeline {
             }
         }
         stage("Deploy"){
-            steps{
-                sh "docker login -u $dockerhub_usr -p $dockerhub_pwd"
-                sh "docker push $imagename"
+            if (CURRENT_BRANCH == 'master') {
+                steps{
+                    sh "docker login -u $dockerhub_usr -p $dockerhub_pwd"
+                    sh "docker push $imagename"
+                }
             }
         }
     }
