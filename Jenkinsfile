@@ -1,7 +1,6 @@
 pipeline {
    agent { 
         docker {
-            label "docker"
             image "python:3.10"
         }
     }
@@ -26,6 +25,7 @@ pipeline {
         stage("Test"){
             steps{
                 sh "pytest app"
+                sh "exit"
             }
         }
         stage("Build"){
