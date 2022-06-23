@@ -26,7 +26,7 @@ pipeline {
                 }
             }
             steps{
-                // sh "pip install --no-cache-dir --upgrade -r requirements.txt"
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pytest app"
             }
         }
