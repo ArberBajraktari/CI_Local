@@ -1,7 +1,6 @@
 pipeline {
    agent { 
         docker {
-           label "docker" 
             image "python:3.10"
         }
     }
@@ -26,11 +25,21 @@ pipeline {
             }
         }
         stage("Build"){
+            agent{
+                docker{
+                    image "docker"
+                }
+            }
             steps{
                 sh "docker build -t $imagename ."
             }
         }
         stage("Deploy"){
+            agent{
+                docker{
+                    image "docker"
+                }
+            }
             when{
                 branch "master"
             }
