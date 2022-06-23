@@ -21,11 +21,13 @@ pipeline {
         }
         stage("Lint"){
             steps{
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
             }
         }
         stage("Test"){
             steps{
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pytest app"
             }
         }
