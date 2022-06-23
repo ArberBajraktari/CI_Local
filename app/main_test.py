@@ -11,9 +11,12 @@ def test_root():
     response = client.get("/not-valid")
     assert response.status_code == 404
 
+
 def test_import_csv():
     response = import_csv("bad path")
-    assert response == "File not found. There was an error with loading the Data!"
+    expected = "File not found. There was an error with loading the Data!"
+    assert response == expected
     
     response = import_csv("files/test.csv")
-    assert response == {'Iron Man': {'movie': 'Iron Man', 'release_date': '2-May-08', 'release_order': '1'}}
+    assert response == {'Iron Man': {'movie': 'Iron Man', 
+                        'release_date': '2-May-08', 'release_order': '1'}}
