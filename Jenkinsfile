@@ -9,13 +9,11 @@ pipeline {
         dockerhub_usr = "bajraktari"
         dockerhub_pwd = credentials("dockerhub_pwd")
         branch_name = "${env.GIT_BRANCH}"
+        def dockerHome = tool 'docker'
+        env.PATH = "${dockerHome}/bin:${env.PATH}"
     }
 
     stages{
-        stage('Initialize'){
-            def dockerHome = tool 'docker'
-            env.PATH = "${dockerHome}/bin:${env.PATH}"
-        }
         stage("Dependencies"){
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
