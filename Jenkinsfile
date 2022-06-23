@@ -1,5 +1,9 @@
 pipeline {
-    agent any
+    agent {
+        node {
+            label 'docker'
+        }
+    }
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
         dockerhub_usr = "bajraktari"
