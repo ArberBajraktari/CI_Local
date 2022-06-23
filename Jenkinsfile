@@ -9,8 +9,8 @@ pipeline {
         dockerhub_usr = "bajraktari"
         dockerhub_pwd = credentials("dockerhub_pwd")
         branch_name = "${env.GIT_BRANCH}"
-        def dockerHome = tool 'docker'
-        env.PATH = "${dockerHome}/bin:${env.PATH}"
+        dockerHome = tool 'docker'
+        ${env.PATH} = "${dockerHome}/bin:${env.PATH}"
     }
 
     stages{
