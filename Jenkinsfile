@@ -1,10 +1,5 @@
 pipeline {
-   agent { 
-        docker {
-            image "python:3.10"
-            args '-u root -p 888:8081 -v /var/run/docker.sock:/var/run/docker.sock  '
-        }
-    }
+    agent any
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
         dockerhub_usr = "bajraktari"
@@ -14,6 +9,12 @@ pipeline {
 
     stages{
         stage("Dependencies"){
+               agent { 
+                    docker {
+                        image "python:3.10"
+                        reuseNode true
+                    }
+                }
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
             }
