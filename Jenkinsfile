@@ -20,14 +20,24 @@ pipeline {
             }
         }
         stage("Lint"){
+            agent { 
+                docker {
+                    image "python:3.10"
+                    reuseNode true
+                }
+            }
             steps{
-                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
             }
         }
         stage("Test"){
+            agent { 
+                docker {
+                    image "python:3.10"
+                    reuseNode true
+                }
+            }
             steps{
-                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pytest app"
             }
         }
