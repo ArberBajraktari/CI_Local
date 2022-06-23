@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+   agent { 
+        docker {
+           label "docker" 
+            image "python:3.10"
+        }
+    }
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
         dockerhub_usr = "bajraktari"
@@ -9,22 +14,12 @@ pipeline {
 
     stages{
         stage("Lint"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pycodestyle app"
             }
         }
         stage("Test"){
-            agent{
-                docker{
-                    image 'python:3.10'
-                }
-            }
             steps{
                 sh "pip install --no-cache-dir --upgrade -r requirements.txt"
                 sh "pytest app"
