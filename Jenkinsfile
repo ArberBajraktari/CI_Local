@@ -26,8 +26,8 @@ pipeline {
                 }
             }
             steps{
-                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
-                sh "python3 python.py"
+                // sh "pip install --no-cache-dir --upgrade -r requirements.txt"
+                sh "pytest app"
             }
         }
         stage("Build"){
