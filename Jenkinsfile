@@ -29,6 +29,7 @@ pipeline {
                 }
             }
             steps{
+                sh exit
                 sh "docker build -t $imagename ."
             }
         }
