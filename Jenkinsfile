@@ -27,8 +27,12 @@ pipeline {
             }
         }
         stage('deploy'){
+             when{
+                branch "master"
+            }
             steps{
-                echo "deploying ..."   
+                sh "docker login -u $dockerhub_usr -p $dockerhub_pwd"
+                sh "docker push $imagename"
             }
         }
     }
