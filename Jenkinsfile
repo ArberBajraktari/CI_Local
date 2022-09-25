@@ -23,10 +23,16 @@ pipeline {
             }
         }
         stage('build'){
+            agent{
+                docker{
+                    image "docker"
+                }
+            }
             steps{
-                echo "building..."   
+                sh "docker build -t $imagename ."
             }
         }
+        
         stage('deploy'){
             steps{
                 echo "deploying ..."   
