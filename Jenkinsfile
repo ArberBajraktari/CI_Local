@@ -1,9 +1,10 @@
 pipeline {
-    agent { docker { image 'maven:3.8.4-openjdk-11-slim' } }
+    agent { docker { image 'python:3.10' } }
     stages {
-        stage('build') {
+        stage('lint') {
             steps {
-                sh 'mvn --version'
+                sh "pip install --no-cache-dir --upgrade -r requirements.txt"
+                sh "pycodestyle app"
             }
         }
     }
