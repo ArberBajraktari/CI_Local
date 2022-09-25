@@ -2,7 +2,7 @@ pipeline {
     agent { docker { image 'python:3.10' } }
     environment {
         imagename = "bajraktari/ci_backend_fastapi"
-        dockerhub_usr = "bajraktari"
+        dockerhub_usr = credentials("dockerhub_username")
         dockerhub_pwd = credentials("dockerhub_pwd")
         branch_name = "${env.GIT_BRANCH}"
     }
