@@ -17,6 +17,6 @@ def test_import_csv():
     expected = "File not found. There was an error with loading the Data!"
     assert response == expected
 
-    response = import_csv("files/test.csv")
+    response = import_csv("../files/test.csv")
     assert response == {'Iron Man': {'movie': 'Iron Man',
                         'release_date': '2-May-08', 'release_order': '1'}}
