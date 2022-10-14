@@ -21,4 +21,4 @@ def import_csv(file):
 
 @app.get("/")
 async def root():
-    return import_csv("files/mcu-movies.csv")
+    return import_csv("files/mhcu-movies.csv")
